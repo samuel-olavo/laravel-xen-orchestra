@@ -1,5 +1,7 @@
 # XO 6.7.0 / REST API 0.37.0
 
+Historical notes for the 0.x update. Version 1.0.0 coverage is documented in [rest-api-0.39.md](rest-api-0.39.md).
+
 Reference: [commit 1a795970f9c60396967d9510e3d2a29b56f2da1d](https://github.com/vatesfr/xen-orchestra/commit/1a795970f9c60396967d9510e3d2a29b56f2da1d).
 The commit marks the release in the changelog. Contracts were checked against the controller implementations at that revision, not the newer master branch.
 

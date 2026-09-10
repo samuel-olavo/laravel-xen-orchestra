@@ -50,4 +50,49 @@ class Network extends Model
             $this->client,
         );
     }
+
+    /** Requires the sdn-controller plugin. Payload fields are passed unchanged. */
+    public function addTrafficRule(array $attributes, bool $sync = false): Task
+    {
+        if ($this->id() === null) {
+            throw new \LogicException('A traffic rule operation requires an object ID.');
+        }
+        $payload = $this->client->post(
+            'plugins/sdn-controller/'.static::endpoint().'/'.rawurlencode($this->id()).'/actions/add_traffic_rule',
+            $attributes,
+            $sync ? ['sync' => true] : [],
+        );
+
+        return Task::fromActionResponse($payload, $this->client, $sync);
+    }
+
+    /** Requires the sdn-controller plugin. Payload fields are passed unchanged. */
+    public function deleteTrafficRule(array $attributes, bool $sync = false): Task
+    {
+        if ($this->id() === null) {
+            throw new \LogicException('A traffic rule operation requires an object ID.');
+        }
+        $payload = $this->client->post(
+            'plugins/sdn-controller/'.static::endpoint().'/'.rawurlencode($this->id()).'/actions/delete_traffic_rule',
+            $attributes,
+            $sync ? ['sync' => true] : [],
+        );
+
+        return Task::fromActionResponse($payload, $this->client, $sync);
+    }
+
+    /** Requires the sdn-controller plugin. Payload fields are passed unchanged. */
+    public function updateTrafficRule(array $attributes, bool $sync = false): Task
+    {
+        if ($this->id() === null) {
+            throw new \LogicException('A traffic rule operation requires an object ID.');
+        }
+        $payload = $this->client->post(
+            'plugins/sdn-controller/'.static::endpoint().'/'.rawurlencode($this->id()).'/actions/update_traffic_rule',
+            $attributes,
+            $sync ? ['sync' => true] : [],
+        );
+
+        return Task::fromActionResponse($payload, $this->client, $sync);
+    }
 }

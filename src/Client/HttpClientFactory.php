@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Client;
 
-use GuzzleHttp\Client as GuzzleClient;
 use Psr\Http\Client\ClientInterface;
 
 /**
@@ -30,7 +29,7 @@ final class HttpClientFactory
         int $timeout = 30,
         int $connectTimeout = 10,
     ): ClientInterface {
-        return new GuzzleClient([
+        return new StreamingHttpClient([
             'verify' => $verifySsl,
             'timeout' => $timeout,
             'connect_timeout' => $connectTimeout,

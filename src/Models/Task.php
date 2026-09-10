@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Models;
 
+use SamuelOlavo\XenOrchestra\Client\XenOrchestraClient;
 use SamuelOlavo\XenOrchestra\Exceptions\ConnectionException;
 use SamuelOlavo\XenOrchestra\Exceptions\TaskFailedException;
 use SamuelOlavo\XenOrchestra\Exceptions\TaskTimeoutException;
@@ -152,11 +153,13 @@ class Task extends Model
     }
 
     /** `POST /tasks/<id>/actions/abort` */
-    public function abort(): static
+    public function abort(bool $sync = false): self
     {
-        $this->client->post($this->path('actions', 'abort'));
-
-        return $this;
+        return self::fromActionResponse(
+            $this->client->post($this->path('actions', 'abort'), [], $sync ? ['sync' => true] : []),
+            $this->client,
+            $sync,
+        );
     }
 
     /** `DELETE /tasks/<id>` — removes a finished task from the list. */
@@ -174,7 +177,7 @@ class Task extends Model
      */
     public static function fromActionResponse(
         mixed $payload,
-        \SamuelOlavo\XenOrchestra\Client\XenOrchestraClient $client,
+        XenOrchestraClient $client,
         bool $sync = false,
     ): self {
         if ($sync) {

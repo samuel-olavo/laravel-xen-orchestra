@@ -1,6 +1,6 @@
-# Laravel Xen Orchestra
+# Laravel Xen Orchestra 1.0.0
 
-Laravel integration for the [Xen Orchestra](https://xen-orchestra.com) REST API: fluent access to virtual machines, hosts, pools, storage repositories and asynchronous tasks.
+Laravel client for the Xen Orchestra REST API: infrastructure, backups, identity/RBAC administration, asynchronous tasks, binary transfers and events.
 
 ```php
 $vms = Xo::vms()
@@ -48,12 +48,13 @@ $vms = Xo::vms()->fields(['name_label', 'power_state'])->limit(100)->get();
 
 Laravel 11 is not supported: its security support ended on 12 March 2026, and Composer refuses to resolve `illuminate/*` 11.x against the advisory database.
 
-Updated against `@xen-orchestra/rest-api` **0.37.0**, shipped with XO **6.7.0** ([reference commit](https://github.com/vatesfr/xen-orchestra/commit/1a795970f9c60396967d9510e3d2a29b56f2da1d)). Request contracts are covered by local tests with a fake transport; live-appliance integration has not been verified. The API is still versioned `/v0` and its authors reserve the right to change it, so pin a version you have tested.
+Version **1.0.0** targets `@xen-orchestra/rest-api` **0.39.0**, shipped with XO **6.8.0** ([reference commit](https://github.com/vatesfr/xen-orchestra/commit/faf6745471d7b2a00d774d98428873455e9539dc)). See the [coverage table](docs/rest-api-0.39.md), [1.0 usage guide](docs/usage-1.0.md) and [migration notes](CHANGELOG.md). Contracts are tested with a fake transport; live-appliance integration has not been verified.
+
 
 ## Installation
 
 ```bash
-composer require samuelolavo/laravel-xen-orchestra
+composer require samuel-olavo/laravel-xen-orchestra:^1.0
 ```
 
 The service provider is auto-discovered. Publish the config if you want to edit it:
@@ -275,7 +276,7 @@ VM/VDI updates return the same model without an implicit GET. XO applies fields 
 
 Synchronous actions return a completed `Task`, with the operation's entire response in `result()` (including created object IDs). Calling `wait()` on it makes no additional request.
 
-See [the release coverage notes](docs/rest-api-0.37.md) for the mapped endpoints and scope.
+The [1.0 guide](docs/usage-1.0.md) covers the additional 0.39.0 helpers, transfers and subscriptions.
 
 ### Sub-resources
 
@@ -370,17 +371,21 @@ The REST API is read-heavy, and this package does not pretend otherwise. Being e
 
 **Supported**
 
-- Reads across VMs, hosts, pools, SRs, networks, tasks, snapshots, templates, VDIs, users, groups and ACL roles
-- `fields`, `filter`, `limit`, `ndjson`
+- Fluent reads across all 32 current controller collections (see the coverage table)
+- `fields`, `filter`, `limit`, `ndjson`, raw Markdown output
 - The full VM power lifecycle, snapshots, snapshot restoration, cloning, migration and partial updates
-- VDI partial updates and storage repository creation
-- Host enable/disable with evacuation and auto-enable options
-- ACL role users/groups and group ACL roles
+- VDI/VBD/VIF creation, updates where offered, removal, connection actions and disk migration
+- Storage repository creation and maintenance
+- Backup repository administration, health/benchmark operations, schedules and logs
+- Host lifecycle, maintenance, interface discovery and IPMI inventory
+- Users, groups, servers, ACL roles and privileges, memberships and authentication tokens
 - Pool-level actions: rolling update, rolling reboot, emergency shutdown, VM and network creation
 - Tags, alarms, messages, per-object tasks
 - Stats and dashboard endpoints
 - Asynchronous task handling with server-side long-polling
-- A generic escape hatch for everything else
+- Binary VM/VDI imports/exports, host logs, SSE events and subscriptions
+- SDN traffic rules, OpenAPI/GUI metadata and MCP status
+- Generic HTTP methods for deprecated aliases and installation-specific routes
 
 **Not supported, because the REST API does not offer it**
 
@@ -400,17 +405,17 @@ $task = Xo::pools()->find($poolId)->createVm([
 
 Creation payloads are passed unchanged to XO. In 0.37.0, `high_availability` sets the HA restart priority. Field names differ between creation, updates and GET responses; consult the `create_vm` entry in your appliance's `/rest/v0/docs/swagger.json` for the complete contract.
 
-**Not supported yet, planned**
+**Outside the package's scope**
 
-- Binary import/export of VMs and VDIs (XVA/VHD streaming)
-- The `/events` SSE stream and its subscriptions
-- User/group administration (listing and permission relations are supported); server administration endpoints
+- Deprecated aliases have modern replacements; use generic HTTP methods only when an older path is specifically required.
+- JSON-RPC-only features and the MCP protocol are not implemented by this REST client.
+- Plugin helpers require the corresponding server plugin. Custom external routes depend on the installation.
 
 ## Architecture
 
-The core has no dependency on Laravel. `Client/`, `Resources/`, `Models/` and `Concerns/` take a PSR-18 HTTP client and PSR-17 factories and nothing else; everything framework-specific lives under `Laravel/`.
+The core has no dependency on Laravel. It uses PSR-18/PSR-17 HTTP interfaces with a Guzzle transport and stream utilities; everything framework-specific lives under `Laravel/`.
 
-That is primarily a testability decision rather than a portability one — injecting the transport is what lets the whole package be tested with plain PHPUnit and no application boot. It does mean the core will run outside Laravel, but that is a side effect and not yet a supported, tested configuration.
+The test suite exercises the core without an application boot. The default transport implements `StreamingClientInterface`; custom transports need that interface for SSE. Attribute access never makes HTTP requests.
 
 ## Contributing
 

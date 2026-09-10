@@ -12,7 +12,7 @@ trait UpdatesObject
      */
     public function update(array $attributes): static
     {
-        $this->client->patch((string) $this->href(), $attributes);
+        $this->client->patch($this->path(), $attributes);
 
         return $this;
     }

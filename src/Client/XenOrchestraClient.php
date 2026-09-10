@@ -4,24 +4,49 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Client;
 
-use SamuelOlavo\XenOrchestra\Resources\AclRoles;
-use SamuelOlavo\XenOrchestra\Resources\Groups;
-use SamuelOlavo\XenOrchestra\Resources\Users;
-use SamuelOlavo\XenOrchestra\Resources\VirtualDisks;
-
 use GuzzleHttp\Psr7\HttpFactory;
+use GuzzleHttp\Psr7\LimitStream;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
 use SamuelOlavo\XenOrchestra\Exceptions\ConnectionException;
 use SamuelOlavo\XenOrchestra\Exceptions\RequestException;
+use SamuelOlavo\XenOrchestra\Models\VirtualMachine;
+use SamuelOlavo\XenOrchestra\Resources\AclPrivileges;
+use SamuelOlavo\XenOrchestra\Resources\AclRoles;
+use SamuelOlavo\XenOrchestra\Resources\Alarms;
+use SamuelOlavo\XenOrchestra\Resources\BackupArchives;
+use SamuelOlavo\XenOrchestra\Resources\BackupJobs;
+use SamuelOlavo\XenOrchestra\Resources\BackupLogs;
+use SamuelOlavo\XenOrchestra\Resources\BackupRepositories;
+use SamuelOlavo\XenOrchestra\Resources\Events;
+use SamuelOlavo\XenOrchestra\Resources\Groups;
 use SamuelOlavo\XenOrchestra\Resources\Hosts;
+use SamuelOlavo\XenOrchestra\Resources\Messages;
 use SamuelOlavo\XenOrchestra\Resources\Networks;
+use SamuelOlavo\XenOrchestra\Resources\PciDevices;
+use SamuelOlavo\XenOrchestra\Resources\PhysicalBlockDevices;
+use SamuelOlavo\XenOrchestra\Resources\PhysicalGpus;
+use SamuelOlavo\XenOrchestra\Resources\PhysicalInterfaces;
 use SamuelOlavo\XenOrchestra\Resources\Pools;
+use SamuelOlavo\XenOrchestra\Resources\Proxies;
+use SamuelOlavo\XenOrchestra\Resources\RestoreLogs;
+use SamuelOlavo\XenOrchestra\Resources\Schedules;
+use SamuelOlavo\XenOrchestra\Resources\Servers;
+use SamuelOlavo\XenOrchestra\Resources\StorageManagers;
 use SamuelOlavo\XenOrchestra\Resources\StorageRepositories;
 use SamuelOlavo\XenOrchestra\Resources\Tasks;
+use SamuelOlavo\XenOrchestra\Resources\Users;
+use SamuelOlavo\XenOrchestra\Resources\VirtualBlockDevices;
+use SamuelOlavo\XenOrchestra\Resources\VirtualDisks;
+use SamuelOlavo\XenOrchestra\Resources\VirtualDiskSnapshots;
+use SamuelOlavo\XenOrchestra\Resources\VirtualInterfaces;
+use SamuelOlavo\XenOrchestra\Resources\VirtualMachineControllers;
 use SamuelOlavo\XenOrchestra\Resources\VirtualMachines;
+use SamuelOlavo\XenOrchestra\Resources\VirtualMachineSnapshots;
+use SamuelOlavo\XenOrchestra\Resources\VirtualMachineTemplates;
 
 /**
  * Entry point to a Xen Orchestra appliance.
@@ -41,6 +66,8 @@ use SamuelOlavo\XenOrchestra\Resources\VirtualMachines;
  */
 class XenOrchestraClient
 {
+    public const VERSION = '1.0.0';
+
     public const API_PREFIX = '/rest/v0';
 
     protected string $baseUrl;
@@ -163,7 +190,7 @@ class XenOrchestraClient
      *
      * Xo::vm($uuid)->start() reads better than Xo::vms()->find($uuid)->start().
      */
-    public function vm(string $id, array $fields = []): \SamuelOlavo\XenOrchestra\Models\VirtualMachine
+    public function vm(string $id, array $fields = []): VirtualMachine
     {
         return $this->vms()->find($id, $fields);
     }
@@ -238,7 +265,7 @@ class XenOrchestraClient
      * @throws RequestException     on a non-2xx status
      * @throws ConnectionException  when no response arrives at all
      */
-    public function request(string $method, string $path, ?array $body = null, array $query = []): Response
+    public function request(string $method, string $path, array|StreamInterface|null $body = null, array $query = [], array $headers = [], bool $stream = false): Response
     {
         $uri = $this->uriFor($path, $query);
 
@@ -247,16 +274,32 @@ class XenOrchestraClient
             ->withHeader('Accept', 'application/json')
             ->withHeader('Cookie', 'authenticationToken='.$this->token);
 
-        if ($body !== null) {
-            $encoded = json_encode($body, JSON_THROW_ON_ERROR);
+        if ($body instanceof StreamInterface) {
+            if ($body->isSeekable() && $body->tell() > 0) {
+                // Some transports rewind request bodies. Keep that rewind within
+                // the portion the caller selected, rather than uploading a prefix.
+                $body = new LimitStream($body, -1, $body->tell());
+            }
+            $request = $request->withHeader('Content-Type', 'application/octet-stream')->withBody($body);
+            if ($body->getSize() !== null && $body->isSeekable()) {
+                $request = $request->withHeader('Content-Length', (string) ($body->getSize() - $body->tell()));
+            }
+        } elseif ($body !== null) {
+            $encoded = json_encode($body === [] ? (object) [] : $body, JSON_THROW_ON_ERROR);
 
             $request = $request
                 ->withHeader('Content-Type', 'application/json')
                 ->withBody($this->streamFactory->createStream($encoded));
         }
 
+        foreach ($headers as $name => $value) {
+            $request = $request->withHeader($name, $value);
+        }
+
         try {
-            $psr = $this->httpClient->sendRequest($request);
+            $psr = $stream && $this->httpClient instanceof StreamingClientInterface
+                ? $this->httpClient->sendStreamingRequest($request)
+                : $this->httpClient->sendRequest($request);
         } catch (ClientExceptionInterface $e) {
             throw new ConnectionException(
                 sprintf('Could not reach Xen Orchestra at %s: %s', $uri, $e->getMessage()),
@@ -271,6 +314,37 @@ class XenOrchestraClient
         }
 
         return $response;
+    }
+
+    /** Upload from the stream's current position; the caller owns the stream. */
+    public function upload(string $method, string $path, StreamInterface $source, array $query = []): Response
+    {
+        return $this->request($method, $path, $source, $query);
+    }
+
+    public function download(string $path, array $query = []): Response
+    {
+        return $this->request('GET', $path, query: $query, headers: ['Accept' => 'application/octet-stream'], stream: true);
+    }
+
+    public function events(): Events
+    {
+        return new Events($this);
+    }
+
+    public function openApi(): array
+    {
+        return (array) $this->get('docs/swagger.json');
+    }
+
+    public function guiRoutes(): array
+    {
+        return (array) $this->get('gui-routes');
+    }
+
+    public function mcpStatus(): array
+    {
+        return (array) $this->get('mcp/status');
     }
 
     /** Build the absolute URI for a path plus query parameters. */
@@ -380,5 +454,115 @@ class XenOrchestraClient
         }
 
         return $this->withHttpClient(($this->longPollClientFactory)($timeout));
+    }
+
+    public function aclPrivileges(): AclPrivileges
+    {
+        return new AclPrivileges($this);
+    }
+
+    public function alarms(): Alarms
+    {
+        return new Alarms($this);
+    }
+
+    public function messages(): Messages
+    {
+        return new Messages($this);
+    }
+
+    public function backupArchives(): BackupArchives
+    {
+        return new BackupArchives($this);
+    }
+
+    public function backupJobs(): BackupJobs
+    {
+        return new BackupJobs($this);
+    }
+
+    public function backupLogs(): BackupLogs
+    {
+        return new BackupLogs($this);
+    }
+
+    public function backupRepositories(): BackupRepositories
+    {
+        return new BackupRepositories($this);
+    }
+
+    public function restoreLogs(): RestoreLogs
+    {
+        return new RestoreLogs($this);
+    }
+
+    public function schedules(): Schedules
+    {
+        return new Schedules($this);
+    }
+
+    public function servers(): Servers
+    {
+        return new Servers($this);
+    }
+
+    public function pbds(): PhysicalBlockDevices
+    {
+        return new PhysicalBlockDevices($this);
+    }
+
+    public function pcis(): PciDevices
+    {
+        return new PciDevices($this);
+    }
+
+    public function pgpus(): PhysicalGpus
+    {
+        return new PhysicalGpus($this);
+    }
+
+    public function pifs(): PhysicalInterfaces
+    {
+        return new PhysicalInterfaces($this);
+    }
+
+    public function proxies(): Proxies
+    {
+        return new Proxies($this);
+    }
+
+    public function sms(): StorageManagers
+    {
+        return new StorageManagers($this);
+    }
+
+    public function vbds(): VirtualBlockDevices
+    {
+        return new VirtualBlockDevices($this);
+    }
+
+    public function vifs(): VirtualInterfaces
+    {
+        return new VirtualInterfaces($this);
+    }
+
+    public function vdiSnapshots(): VirtualDiskSnapshots
+    {
+        return new VirtualDiskSnapshots($this);
+    }
+
+    public function vmSnapshots(): VirtualMachineSnapshots
+    {
+        return new VirtualMachineSnapshots($this);
+    }
+
+    public function vmTemplates(): VirtualMachineTemplates
+    {
+        return new VirtualMachineTemplates($this);
+    }
+
+    public function vmControllers(): VirtualMachineControllers
+    {
+        return new VirtualMachineControllers($this);
     }
 }

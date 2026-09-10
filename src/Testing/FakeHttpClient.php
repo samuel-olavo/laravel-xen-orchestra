@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace SamuelOlavo\XenOrchestra\Testing;
 
 use GuzzleHttp\Psr7\Response as PsrResponse;
-use Psr\Http\Client\ClientInterface;
+use PHPUnit\Framework\Assert;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use PHPUnit\Framework\Assert;
+use SamuelOlavo\XenOrchestra\Client\StreamingClientInterface;
 
 /**
  * A PSR-18 client that answers from a stub table instead of the network.
@@ -21,8 +21,13 @@ use PHPUnit\Framework\Assert;
  * ignored) and may contain `*` wildcards. First match wins, so register
  * specific patterns before general ones.
  */
-class FakeHttpClient implements ClientInterface
+class FakeHttpClient implements StreamingClientInterface
 {
+    public function sendStreamingRequest(RequestInterface $request): ResponseInterface
+    {
+        return $this->sendRequest($request);
+    }
+
     /** @var array<string, list<array{status:int, body:mixed, headers:array<string,string>}>> */
     protected array $stubs = [];
 

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Models;
 
-use SamuelOlavo\XenOrchestra\Concerns\UpdatesObject;
-
 use SamuelOlavo\XenOrchestra\Client\Collection;
+use SamuelOlavo\XenOrchestra\Client\Response;
 use SamuelOlavo\XenOrchestra\Concerns\HasAlarms;
 use SamuelOlavo\XenOrchestra\Concerns\HasMessages;
 use SamuelOlavo\XenOrchestra\Concerns\HasTags;
 use SamuelOlavo\XenOrchestra\Concerns\HasTasks;
 use SamuelOlavo\XenOrchestra\Concerns\HydratesModels;
+use SamuelOlavo\XenOrchestra\Concerns\UpdatesObject;
 
 /**
  * A virtual machine.
@@ -96,9 +96,9 @@ class VirtualMachine extends Model
     // Power lifecycle
     // ---------------------------------------------------------------------
 
-    public function start(bool $sync = false): Task
+    public function start(bool $sync = false, ?string $hostId = null): Task
     {
-        return $this->action('start', sync: $sync);
+        return $this->action('start', $hostId === null ? [] : ['hostId' => $hostId], $sync);
     }
 
     /**
@@ -228,5 +228,25 @@ class VirtualMachine extends Model
         );
 
         return Task::fromActionResponse($payload, $this->client, $sync);
+    }
+
+    /** The response body is streamed; use saveTo() or consume its PSR-7 stream. */
+    public function export(string $format = 'xva', array $query = []): Response
+    {
+        return $this->client->download($this->path().'.'.rawurlencode($format), $query);
+    }
+
+    public function enableDataSource(string $name): static
+    {
+        $this->client->request('PUT', $this->path('stats', 'data_source', rawurlencode($name)));
+
+        return $this;
+    }
+
+    public function disableDataSource(string $name): static
+    {
+        $this->client->delete($this->path('stats', 'data_source', rawurlencode($name)));
+
+        return $this;
     }
 }

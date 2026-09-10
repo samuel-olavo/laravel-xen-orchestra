@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Models;
 
-use SamuelOlavo\XenOrchestra\Concerns\RunsActions;
-
 use SamuelOlavo\XenOrchestra\Client\Collection;
+use SamuelOlavo\XenOrchestra\Client\Response;
 use SamuelOlavo\XenOrchestra\Concerns\HasAlarms;
 use SamuelOlavo\XenOrchestra\Concerns\HasMessages;
 use SamuelOlavo\XenOrchestra\Concerns\HasTags;
 use SamuelOlavo\XenOrchestra\Concerns\HasTasks;
 use SamuelOlavo\XenOrchestra\Concerns\HydratesModels;
+use SamuelOlavo\XenOrchestra\Concerns\RunsActions;
 
 /** A physical XCP-ng / XenServer host. */
 class Host extends Model
@@ -84,5 +84,70 @@ class Host extends Model
     public function auditLog(): string
     {
         return $this->client->request('GET', $this->path('audit.txt'))->body();
+    }
+
+    public function start(bool $sync = false): Task
+    {
+        return $this->action('start', sync: $sync);
+    }
+
+    public function shutdown(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('clean_shutdown', $attributes, $sync);
+    }
+
+    public function reboot(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('clean_reboot', $attributes, $sync);
+    }
+
+    public function smartReboot(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('smart_reboot', $attributes, $sync);
+    }
+
+    public function restartToolstack(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('restart_toolstack', $attributes, $sync);
+    }
+
+    public function emergencyShutdown(bool $sync = false): Task
+    {
+        return $this->action('emergency_shutdown', sync: $sync);
+    }
+
+    public function detach(bool $sync = false): Task
+    {
+        return $this->action('detach', sync: $sync);
+    }
+
+    public function forget(bool $sync = false): Task
+    {
+        return $this->action('forget', sync: $sync);
+    }
+
+    public function scanPifs(bool $sync = false): Task
+    {
+        return $this->action('scan_pifs', sync: $sync);
+    }
+
+    public function managementReconfigure(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('management_reconfigure', $attributes, $sync);
+    }
+
+    /** Requires the ipmi-sensors plugin and an available IPMI device. */
+    public function ipmi(): array
+    {
+        if ($this->id() === null) {
+            throw new \LogicException('An IPMI request requires a host ID.');
+        }
+
+        return (array) $this->client->get('plugins/ipmi-sensors/hosts/'.rawurlencode($this->id()).'/ipmi');
+    }
+
+    public function logs(): Response
+    {
+        return $this->client->download($this->path('logs.tgz'));
     }
 }

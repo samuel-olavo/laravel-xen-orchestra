@@ -232,4 +232,9 @@ abstract class Resource
     {
         return $this->client;
     }
+
+    public function markdown(): string
+    {
+        return $this->client->request('GET', $this->endpoint(), query: $this->query() + ['markdown' => true])->body();
+    }
 }

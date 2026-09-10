@@ -63,7 +63,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
 
         $id = $this->attributes['id'] ?? $this->attributes['uuid'] ?? null;
 
-        return is_string($id) ? static::endpoint().'/'.$id : null;
+        return is_string($id) ? static::endpoint().'/'.rawurlencode($id) : null;
     }
 
     /**
@@ -195,6 +195,11 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /** @internal used by resources when hydrating results */
     protected function path(string ...$segments): string
     {
-        return implode('/', [rtrim((string) $this->href(), '/'), ...$segments]);
+        $href = $this->href();
+        if ($href === null) {
+            throw new \LogicException('A remote operation requires an object ID or href.');
+        }
+
+        return implode('/', [rtrim($href, '/'), ...$segments]);
     }
 }

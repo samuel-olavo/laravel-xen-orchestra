@@ -19,11 +19,11 @@ trait HasAlarms
     use HydratesModels;
 
     /** @param list<string> $fields */
-    public function alarms(array $fields = []): Collection
+    public function alarms(array $fields = [], array $query = []): Collection
     {
         $payload = $this->client->get(
             $this->path('alarms'),
-            $fields === [] ? [] : ['fields' => $fields],
+            ($fields === [] ? [] : ['fields' => $fields]) + $query,
         );
 
         return $this->hydrateMany($payload, GenericObject::class, $this->client);

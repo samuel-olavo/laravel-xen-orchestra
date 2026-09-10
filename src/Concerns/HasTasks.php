@@ -13,11 +13,11 @@ trait HasTasks
     use HydratesModels;
 
     /** @param list<string> $fields */
-    public function tasks(array $fields = []): Collection
+    public function tasks(array $fields = [], array $query = []): Collection
     {
         $payload = $this->client->get(
             $this->path('tasks'),
-            $fields === [] ? [] : ['fields' => $fields],
+            ($fields === [] ? [] : ['fields' => $fields]) + $query,
         );
 
         return $this->hydrateMany($payload, Task::class, $this->client);

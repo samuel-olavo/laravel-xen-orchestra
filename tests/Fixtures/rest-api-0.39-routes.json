@@ -1,0 +1,1360 @@
+{
+  "commit": "faf6745471d7b2a00d774d98428873455e9539dc",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/acl-privileges",
+      "source": "@xen-orchestra/rest-api/src/acl-privileges/acl-privilege.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/acl-privileges",
+      "source": "@xen-orchestra/rest-api/src/acl-privileges/acl-privilege.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-privileges/{id}",
+      "source": "@xen-orchestra/rest-api/src/acl-privileges/acl-privilege.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-privileges/{id}",
+      "source": "@xen-orchestra/rest-api/src/acl-privileges/acl-privilege.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/acl-privileges/{id}",
+      "source": "@xen-orchestra/rest-api/src/acl-privileges/acl-privilege.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/acl-roles",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/{id}",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-roles/{id}",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/acl-roles/{id}",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/acl-roles/{id}/actions/copy",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/{id}/privileges",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/acl-roles/{id}/groups/{groupId}",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-roles/{id}/groups/{groupId}",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/acl-roles/{id}/users/{userId}",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-roles/{id}/users/{userId}",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/{id}/users",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/{id}/groups",
+      "source": "@xen-orchestra/rest-api/src/acl-roles/acl-role.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/alarms",
+      "source": "@xen-orchestra/rest-api/src/alarms/alarm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/alarms/{id}",
+      "source": "@xen-orchestra/rest-api/src/alarms/alarm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-archives",
+      "source": "@xen-orchestra/rest-api/src/backup-archives/backup-archive.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-archives/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-archives/backup-archive.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-jobs",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-jobs/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/jobs/vm",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/jobs/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/jobs/vm/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/jobs/metadata",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/jobs/metadata/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/jobs/mirror",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/jobs/mirror/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/logs",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup/logs/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-jobs/backup-job.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-logs",
+      "source": "@xen-orchestra/rest-api/src/backup-logs/backup-log.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-logs/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-logs/backup-log.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-repositories",
+      "source": "@xen-orchestra/rest-api/src/backup-repositories/backup-repositories.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/backup-repositories",
+      "source": "@xen-orchestra/rest-api/src/backup-repositories/backup-repositories.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-repositories/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-repositories/backup-repositories.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/backup-repositories/{id}/actions/forget",
+      "source": "@xen-orchestra/rest-api/src/backup-repositories/backup-repositories.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/backup-repositories/{id}",
+      "source": "@xen-orchestra/rest-api/src/backup-repositories/backup-repositories.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-repositories/{id}/health",
+      "source": "@xen-orchestra/rest-api/src/backup-repositories/backup-repositories.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/backup-repositories/{id}/actions/benchmark",
+      "source": "@xen-orchestra/rest-api/src/backup-repositories/backup-repositories.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/events",
+      "source": "@xen-orchestra/rest-api/src/events/event.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/events/{id}/subscriptions",
+      "source": "@xen-orchestra/rest-api/src/events/event.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/events/{id}/subscriptions/{subscriptionId}",
+      "source": "@xen-orchestra/rest-api/src/events/event.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/groups",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{id}",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/groups/{id}",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/groups",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/{id}",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/{id}/users/{userId}",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/{id}/users/{userId}",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{id}/users",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{id}/acl-roles",
+      "source": "@xen-orchestra/rest-api/src/groups/group.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/stats",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/audit.txt",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/logs.tgz",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/smt",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/missing_patches",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/hosts/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/hosts/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/management_reconfigure",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/disable",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/enable",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/start",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/clean_shutdown",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/clean_reboot",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/smart_reboot",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/restart_toolstack",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/emergency_shutdown",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/detach",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/forget",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/{id}/actions/scan_pifs",
+      "source": "@xen-orchestra/rest-api/src/hosts/host.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/mcp/status",
+      "source": "@xen-orchestra/rest-api/src/mcp/mcp.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/messages",
+      "source": "@xen-orchestra/rest-api/src/messages/message.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/messages/{id}",
+      "source": "@xen-orchestra/rest-api/src/messages/message.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/networks",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/{id}",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/networks/{id}",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/networks/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/networks/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/networks/network.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pbds",
+      "source": "@xen-orchestra/rest-api/src/pbds/pbd.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pbds/{id}",
+      "source": "@xen-orchestra/rest-api/src/pbds/pbd.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pbds/{id}/actions/plug",
+      "source": "@xen-orchestra/rest-api/src/pbds/pbd.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pbds/{id}/actions/unplug",
+      "source": "@xen-orchestra/rest-api/src/pbds/pbd.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pcis",
+      "source": "@xen-orchestra/rest-api/src/pcis/pci.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pcis/{id}",
+      "source": "@xen-orchestra/rest-api/src/pcis/pci.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pgpus",
+      "source": "@xen-orchestra/rest-api/src/pgpus/pgpu.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pgpus/{id}",
+      "source": "@xen-orchestra/rest-api/src/pgpus/pgpu.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs",
+      "source": "@xen-orchestra/rest-api/src/pifs/pif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/{id}",
+      "source": "@xen-orchestra/rest-api/src/pifs/pif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/pifs/pif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/pifs/pif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/pifs/pif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/{id}",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/create_network",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/create_bonded_network",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/create_internal_network",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/emergency_shutdown",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/rolling_reboot",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/rolling_update",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/vms",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/create_vm",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/{id}/stats",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/{id}/dashboard",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/{id}/missing_patches",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/pools/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/pools/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/management_reconfigure",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/{id}/actions/add_host",
+      "source": "@xen-orchestra/rest-api/src/pools/pool.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/proxies",
+      "source": "@xen-orchestra/rest-api/src/proxies/proxy.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/proxies/{id}",
+      "source": "@xen-orchestra/rest-api/src/proxies/proxy.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/restore-logs",
+      "source": "@xen-orchestra/rest-api/src/restore-logs/restore-log.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/restore-logs/{id}",
+      "source": "@xen-orchestra/rest-api/src/restore-logs/restore-log.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/restore/logs",
+      "source": "@xen-orchestra/rest-api/src/restore-logs/restore-log.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/restore/logs/{id}",
+      "source": "@xen-orchestra/rest-api/src/restore-logs/restore-log.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/schedules",
+      "source": "@xen-orchestra/rest-api/src/schedules/schedule.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/schedules/{id}",
+      "source": "@xen-orchestra/rest-api/src/schedules/schedule.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/schedules/{id}/actions/run",
+      "source": "@xen-orchestra/rest-api/src/schedules/schedule.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/servers",
+      "source": "@xen-orchestra/rest-api/src/servers/server.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/servers/{id}",
+      "source": "@xen-orchestra/rest-api/src/servers/server.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/servers/{id}",
+      "source": "@xen-orchestra/rest-api/src/servers/server.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/servers",
+      "source": "@xen-orchestra/rest-api/src/servers/server.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/servers/{id}/actions/connect",
+      "source": "@xen-orchestra/rest-api/src/servers/server.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/servers/{id}/actions/disconnect",
+      "source": "@xen-orchestra/rest-api/src/servers/server.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/servers/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/servers/server.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/sms",
+      "source": "@xen-orchestra/rest-api/src/sms/sm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/sms/{id}",
+      "source": "@xen-orchestra/rest-api/src/sms/sm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/srs",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/{id}",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/srs",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/{id}/vdis",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/srs/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/srs/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/{id}/actions/reclaim_space",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/{id}/actions/scan",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/{id}/actions/forget",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/srs/{id}",
+      "source": "@xen-orchestra/rest-api/src/srs/sr.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/tasks",
+      "source": "@xen-orchestra/rest-api/src/tasks/task.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/tasks/{id}",
+      "source": "@xen-orchestra/rest-api/src/tasks/task.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/tasks",
+      "source": "@xen-orchestra/rest-api/src/tasks/task.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/tasks/{id}",
+      "source": "@xen-orchestra/rest-api/src/tasks/task.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/tasks/{id}/actions/abort",
+      "source": "@xen-orchestra/rest-api/src/tasks/task.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/{id}",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{id}",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}/groups",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}/authentication_tokens",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/users/authentication_tokens",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/users/{id}/authentication_tokens",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}/acl-privileges",
+      "source": "@xen-orchestra/rest-api/src/users/user.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/{id}",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vbds",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vbds/{id}",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vbds/{id}/actions/connect",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vbds/{id}/actions/disconnect",
+      "source": "@xen-orchestra/rest-api/src/vbds/vbd.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/{id}.{format}",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/{id}",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdi-snapshots/{id}",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vdi-snapshots/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdi-snapshots/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vdi-snapshots/vdi-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/{id}.{format}",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vdis/{id}.{format}",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/{id}",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/vdis/{id}",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vdis",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdis/{id}",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vdis/{id}/actions/migrate",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vdis/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdis/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vdis/vdi.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/{id}",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/vifs/{id}",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vifs",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vifs/{id}",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vifs/{id}/actions/connect",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vifs/{id}/actions/disconnect",
+      "source": "@xen-orchestra/rest-api/src/vifs/vif.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/{id}",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/{id}/vdis",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vm-controllers/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-controllers/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vm-controller/vm-controller.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/{id}.{format}",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/{id}",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-snapshots/{id}",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/{id}/vdis",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vm-snapshots/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-snapshots/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vm-snapshots/vm-snapshot.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/{id}.{format}",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/{id}",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-templates/{id}",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/{id}/vdis",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vm-templates/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-templates/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vm-templates/vm-template.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}.{format}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/vms/{id}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vms/{id}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}/stats",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vms/{id}/stats/data_source/{data_source}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vms/{id}/stats/data_source/{data_source}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/start",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/clean_shutdown",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/clean_reboot",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/hard_shutdown",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/hard_reboot",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/pause",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/suspend",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/resume",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/unpause",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/revert_snapshot",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/snapshot",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/clone",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}/alarms",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}/vdis",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}/backup-jobs",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}/messages",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}/tasks",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "PUT",
+      "path": "/vms/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vms/{id}/tags/{tag}",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/{id}/dashboard",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/{id}/actions/migrate",
+      "source": "@xen-orchestra/rest-api/src/vms/vm.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard",
+      "source": "@xen-orchestra/rest-api/src/xoa/xoa.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/ping",
+      "source": "@xen-orchestra/rest-api/src/xoa/xoa.controller.mts"
+    },
+    {
+      "method": "GET",
+      "path": "/gui-routes",
+      "source": "@xen-orchestra/rest-api/src/xoa/xoa.controller.mts"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ namespace SamuelOlavo\XenOrchestra\Resources;
 
 use SamuelOlavo\XenOrchestra\Client\Collection;
 use SamuelOlavo\XenOrchestra\Models\Model;
+use SamuelOlavo\XenOrchestra\Models\ModelResolver;
 use SamuelOlavo\XenOrchestra\Models\VirtualMachine;
 
 /**
@@ -25,7 +26,7 @@ class VirtualMachines extends Resource
 
     public function modelClass(): string
     {
-        return VirtualMachine::class;
+        return ModelResolver::forHref($this->endpoint());
     }
 
     // ---------------------------------------------------------------------

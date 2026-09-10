@@ -13,11 +13,11 @@ trait HasMessages
     use HydratesModels;
 
     /** @param list<string> $fields */
-    public function messages(array $fields = []): Collection
+    public function messages(array $fields = [], array $query = []): Collection
     {
         $payload = $this->client->get(
             $this->path('messages'),
-            $fields === [] ? [] : ['fields' => $fields],
+            ($fields === [] ? [] : ['fields' => $fields]) + $query,
         );
 
         return $this->hydrateMany($payload, GenericObject::class, $this->client);

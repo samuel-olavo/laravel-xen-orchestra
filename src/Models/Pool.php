@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Models;
 
+use Psr\Http\Message\StreamInterface;
 use SamuelOlavo\XenOrchestra\Client\Collection;
 use SamuelOlavo\XenOrchestra\Concerns\HasAlarms;
 use SamuelOlavo\XenOrchestra\Concerns\HasMessages;
@@ -131,5 +132,17 @@ class Pool extends Model
         );
 
         return Task::fromActionResponse($payload, $this->client, $sync);
+    }
+
+    public function addHost(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('add_host', $attributes, $sync);
+    }
+
+    public function importVm(StreamInterface $source, array $query = []): VirtualMachine
+    {
+        $response = $this->client->upload('POST', $this->path('vms'), $source, $query);
+
+        return new VirtualMachine((array) $response->json(), $this->client);
     }
 }

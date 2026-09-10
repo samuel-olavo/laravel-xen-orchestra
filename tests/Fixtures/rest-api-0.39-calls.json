@@ -1,0 +1,3082 @@
+{
+  "cases": [
+    {
+      "method": "GET",
+      "path": "/acl-privileges",
+      "template": "/acl-privileges",
+      "args": [],
+      "kind": "collection",
+      "accessor": "aclPrivileges",
+      "model": "AclPrivilege",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "POST",
+      "path": "/acl-privileges",
+      "template": "/acl-privileges",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "aclPrivileges",
+      "model": "AclPrivilege",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-privileges/object",
+      "template": "/acl-privileges/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "aclPrivileges",
+      "model": "AclPrivilege",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-privileges/object",
+      "template": "/acl-privileges/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "aclPrivileges",
+      "model": "AclPrivilege",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "PATCH",
+      "path": "/acl-privileges/object",
+      "template": "/acl-privileges/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "aclPrivileges",
+      "model": "AclPrivilege",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles",
+      "template": "/acl-roles",
+      "args": [],
+      "kind": "collection",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "POST",
+      "path": "/acl-roles",
+      "template": "/acl-roles",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/object",
+      "template": "/acl-roles/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-roles/object",
+      "template": "/acl-roles/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "PATCH",
+      "path": "/acl-roles/object",
+      "template": "/acl-roles/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "POST",
+      "path": "/acl-roles/object/actions/copy",
+      "template": "/acl-roles/{id}/actions/copy",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "copy"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/object/privileges",
+      "template": "/acl-roles/{id}/privileges",
+      "args": [],
+      "kind": "collection",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "privileges"
+    },
+    {
+      "method": "PUT",
+      "path": "/acl-roles/object/groups/member",
+      "template": "/acl-roles/{id}/groups/{groupId}",
+      "args": [
+        "member"
+      ],
+      "kind": "empty",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "addGroup"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-roles/object/groups/member",
+      "template": "/acl-roles/{id}/groups/{groupId}",
+      "args": [
+        "member"
+      ],
+      "kind": "empty",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "removeGroup"
+    },
+    {
+      "method": "PUT",
+      "path": "/acl-roles/object/users/member",
+      "template": "/acl-roles/{id}/users/{userId}",
+      "args": [
+        "member"
+      ],
+      "kind": "empty",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "addUser"
+    },
+    {
+      "method": "DELETE",
+      "path": "/acl-roles/object/users/member",
+      "template": "/acl-roles/{id}/users/{userId}",
+      "args": [
+        "member"
+      ],
+      "kind": "empty",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "removeUser"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/object/users",
+      "template": "/acl-roles/{id}/users",
+      "args": [],
+      "kind": "collection",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "users"
+    },
+    {
+      "method": "GET",
+      "path": "/acl-roles/object/groups",
+      "template": "/acl-roles/{id}/groups",
+      "args": [],
+      "kind": "collection",
+      "accessor": "aclRoles",
+      "model": "AclRole",
+      "target": "model",
+      "call": "groups"
+    },
+    {
+      "method": "GET",
+      "path": "/alarms",
+      "template": "/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "alarms",
+      "model": "Alarm",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/alarms/object",
+      "template": "/alarms/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "alarms",
+      "model": "Alarm",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-archives",
+      "template": "/backup-archives",
+      "args": [],
+      "kind": "collection",
+      "accessor": "backupArchives",
+      "model": "BackupArchive",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-archives/object",
+      "template": "/backup-archives/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "backupArchives",
+      "model": "BackupArchive",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-jobs",
+      "template": "/backup-jobs",
+      "args": [],
+      "kind": "collection",
+      "accessor": "backupJobs",
+      "model": "BackupJob",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-jobs/object",
+      "template": "/backup-jobs/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "backupJobs",
+      "model": "BackupJob",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-logs",
+      "template": "/backup-logs",
+      "args": [],
+      "kind": "collection",
+      "accessor": "backupLogs",
+      "model": "BackupLog",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-logs/object",
+      "template": "/backup-logs/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "backupLogs",
+      "model": "BackupLog",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-repositories",
+      "template": "/backup-repositories",
+      "args": [],
+      "kind": "collection",
+      "accessor": "backupRepositories",
+      "model": "BackupRepository",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "POST",
+      "path": "/backup-repositories",
+      "template": "/backup-repositories",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "backupRepositories",
+      "model": "BackupRepository",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-repositories/object",
+      "template": "/backup-repositories/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "backupRepositories",
+      "model": "BackupRepository",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "POST",
+      "path": "/backup-repositories/object/actions/forget",
+      "template": "/backup-repositories/{id}/actions/forget",
+      "args": [],
+      "kind": "task",
+      "accessor": "backupRepositories",
+      "model": "BackupRepository",
+      "target": "model",
+      "call": "forget"
+    },
+    {
+      "method": "PATCH",
+      "path": "/backup-repositories/object",
+      "template": "/backup-repositories/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "backupRepositories",
+      "model": "BackupRepository",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "GET",
+      "path": "/backup-repositories/object/health",
+      "template": "/backup-repositories/{id}/health",
+      "args": [],
+      "kind": "json",
+      "accessor": "backupRepositories",
+      "model": "BackupRepository",
+      "target": "model",
+      "call": "health"
+    },
+    {
+      "method": "POST",
+      "path": "/backup-repositories/object/actions/benchmark",
+      "template": "/backup-repositories/{id}/actions/benchmark",
+      "args": [],
+      "kind": "task",
+      "accessor": "backupRepositories",
+      "model": "BackupRepository",
+      "target": "model",
+      "call": "benchmark"
+    },
+    {
+      "method": "GET",
+      "path": "/groups",
+      "template": "/groups",
+      "args": [],
+      "kind": "collection",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/object",
+      "template": "/groups/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "PATCH",
+      "path": "/groups/object",
+      "template": "/groups/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "POST",
+      "path": "/groups",
+      "template": "/groups",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/object",
+      "template": "/groups/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/object/users/member",
+      "template": "/groups/{id}/users/{userId}",
+      "args": [
+        "member"
+      ],
+      "kind": "empty",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "model",
+      "call": "removeUser"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/object/users/member",
+      "template": "/groups/{id}/users/{userId}",
+      "args": [
+        "member"
+      ],
+      "kind": "empty",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "model",
+      "call": "addUser"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/object/users",
+      "template": "/groups/{id}/users",
+      "args": [],
+      "kind": "collection",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "model",
+      "call": "users"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/object/tasks",
+      "template": "/groups/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/object/acl-roles",
+      "template": "/groups/{id}/acl-roles",
+      "args": [],
+      "kind": "collection",
+      "accessor": "groups",
+      "model": "Group",
+      "target": "model",
+      "call": "aclRoles"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts",
+      "template": "/hosts",
+      "args": [],
+      "kind": "collection",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object",
+      "template": "/hosts/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/stats",
+      "template": "/hosts/{id}/stats",
+      "args": [],
+      "kind": "json",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "stats"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/audit.txt",
+      "template": "/hosts/{id}/audit.txt",
+      "args": [],
+      "kind": "binary",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "auditLog"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/logs.tgz",
+      "template": "/hosts/{id}/logs.tgz",
+      "args": [],
+      "kind": "binary",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "logs"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/alarms",
+      "template": "/hosts/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/smt",
+      "template": "/hosts/{id}/smt",
+      "args": [],
+      "kind": "json",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "smt"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/missing_patches",
+      "template": "/hosts/{id}/missing_patches",
+      "args": [],
+      "kind": "collection",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "missingPatches"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/messages",
+      "template": "/hosts/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/hosts/object/tasks",
+      "template": "/hosts/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/hosts/object/tags/tag",
+      "template": "/hosts/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/hosts/object/tags/tag",
+      "template": "/hosts/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/management_reconfigure",
+      "template": "/hosts/{id}/actions/management_reconfigure",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "managementReconfigure"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/disable",
+      "template": "/hosts/{id}/actions/disable",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "disable"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/enable",
+      "template": "/hosts/{id}/actions/enable",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "enable"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/start",
+      "template": "/hosts/{id}/actions/start",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "start"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/clean_shutdown",
+      "template": "/hosts/{id}/actions/clean_shutdown",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "shutdown"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/clean_reboot",
+      "template": "/hosts/{id}/actions/clean_reboot",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "reboot"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/smart_reboot",
+      "template": "/hosts/{id}/actions/smart_reboot",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "smartReboot"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/restart_toolstack",
+      "template": "/hosts/{id}/actions/restart_toolstack",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "restartToolstack"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/emergency_shutdown",
+      "template": "/hosts/{id}/actions/emergency_shutdown",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "emergencyShutdown"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/detach",
+      "template": "/hosts/{id}/actions/detach",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "detach"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/forget",
+      "template": "/hosts/{id}/actions/forget",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "forget"
+    },
+    {
+      "method": "POST",
+      "path": "/hosts/object/actions/scan_pifs",
+      "template": "/hosts/{id}/actions/scan_pifs",
+      "args": [],
+      "kind": "task",
+      "accessor": "hosts",
+      "model": "Host",
+      "target": "model",
+      "call": "scanPifs"
+    },
+    {
+      "method": "GET",
+      "path": "/mcp/status",
+      "template": "/mcp/status",
+      "args": [],
+      "kind": "json",
+      "target": "client",
+      "call": "mcpStatus"
+    },
+    {
+      "method": "GET",
+      "path": "/messages",
+      "template": "/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "messages",
+      "model": "Message",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/messages/object",
+      "template": "/messages/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "messages",
+      "model": "Message",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/networks",
+      "template": "/networks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/object",
+      "template": "/networks/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "DELETE",
+      "path": "/networks/object",
+      "template": "/networks/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/object/alarms",
+      "template": "/networks/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/object/messages",
+      "template": "/networks/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/networks/object/tasks",
+      "template": "/networks/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/networks/object/tags/tag",
+      "template": "/networks/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/networks/object/tags/tag",
+      "template": "/networks/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "networks",
+      "model": "Network",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/pbds",
+      "template": "/pbds",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pbds",
+      "model": "PhysicalBlockDevice",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/pbds/object",
+      "template": "/pbds/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "pbds",
+      "model": "PhysicalBlockDevice",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "POST",
+      "path": "/pbds/object/actions/plug",
+      "template": "/pbds/{id}/actions/plug",
+      "args": [],
+      "kind": "task",
+      "accessor": "pbds",
+      "model": "PhysicalBlockDevice",
+      "target": "model",
+      "call": "plug"
+    },
+    {
+      "method": "POST",
+      "path": "/pbds/object/actions/unplug",
+      "template": "/pbds/{id}/actions/unplug",
+      "args": [],
+      "kind": "task",
+      "accessor": "pbds",
+      "model": "PhysicalBlockDevice",
+      "target": "model",
+      "call": "unplug"
+    },
+    {
+      "method": "GET",
+      "path": "/pcis",
+      "template": "/pcis",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pcis",
+      "model": "PciDevice",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/pcis/object",
+      "template": "/pcis/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "pcis",
+      "model": "PciDevice",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/pgpus",
+      "template": "/pgpus",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pgpus",
+      "model": "PhysicalGpu",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/pgpus/object",
+      "template": "/pgpus/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "pgpus",
+      "model": "PhysicalGpu",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs",
+      "template": "/pifs",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pifs",
+      "model": "PhysicalInterface",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/object",
+      "template": "/pifs/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "pifs",
+      "model": "PhysicalInterface",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/object/alarms",
+      "template": "/pifs/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pifs",
+      "model": "PhysicalInterface",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/object/messages",
+      "template": "/pifs/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pifs",
+      "model": "PhysicalInterface",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/pifs/object/tasks",
+      "template": "/pifs/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pifs",
+      "model": "PhysicalInterface",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/pools",
+      "template": "/pools",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/object",
+      "template": "/pools/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/create_network",
+      "template": "/pools/{id}/actions/create_network",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "createNetwork"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/create_bonded_network",
+      "template": "/pools/{id}/actions/create_bonded_network",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "createBondedNetwork"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/create_internal_network",
+      "template": "/pools/{id}/actions/create_internal_network",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "createInternalNetwork"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/emergency_shutdown",
+      "template": "/pools/{id}/actions/emergency_shutdown",
+      "args": [],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "emergencyShutdown"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/rolling_reboot",
+      "template": "/pools/{id}/actions/rolling_reboot",
+      "args": [],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "rollingReboot"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/rolling_update",
+      "template": "/pools/{id}/actions/rolling_update",
+      "args": [],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "rollingUpdate"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/vms",
+      "template": "/pools/{id}/vms",
+      "args": [],
+      "kind": "upload-created",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "importVm"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/create_vm",
+      "template": "/pools/{id}/actions/create_vm",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "createVm"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/object/stats",
+      "template": "/pools/{id}/stats",
+      "args": [],
+      "kind": "json",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "stats"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/object/dashboard",
+      "template": "/pools/{id}/dashboard",
+      "args": [],
+      "kind": "json",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/object/alarms",
+      "template": "/pools/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/object/missing_patches",
+      "template": "/pools/{id}/missing_patches",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "missingPatches"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/object/messages",
+      "template": "/pools/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "PUT",
+      "path": "/pools/object/tags/tag",
+      "template": "/pools/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/pools/object/tags/tag",
+      "template": "/pools/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/pools/object/tasks",
+      "template": "/pools/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/management_reconfigure",
+      "template": "/pools/{id}/actions/management_reconfigure",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "managementReconfigure"
+    },
+    {
+      "method": "POST",
+      "path": "/pools/object/actions/add_host",
+      "template": "/pools/{id}/actions/add_host",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "pools",
+      "model": "Pool",
+      "target": "model",
+      "call": "addHost"
+    },
+    {
+      "method": "GET",
+      "path": "/proxies",
+      "template": "/proxies",
+      "args": [],
+      "kind": "collection",
+      "accessor": "proxies",
+      "model": "Proxy",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/proxies/object",
+      "template": "/proxies/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "proxies",
+      "model": "Proxy",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/restore-logs",
+      "template": "/restore-logs",
+      "args": [],
+      "kind": "collection",
+      "accessor": "restoreLogs",
+      "model": "RestoreLog",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/restore-logs/object",
+      "template": "/restore-logs/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "restoreLogs",
+      "model": "RestoreLog",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/schedules",
+      "template": "/schedules",
+      "args": [],
+      "kind": "collection",
+      "accessor": "schedules",
+      "model": "Schedule",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/schedules/object",
+      "template": "/schedules/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "schedules",
+      "model": "Schedule",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "POST",
+      "path": "/schedules/object/actions/run",
+      "template": "/schedules/{id}/actions/run",
+      "args": [],
+      "kind": "task",
+      "accessor": "schedules",
+      "model": "Schedule",
+      "target": "model",
+      "call": "run"
+    },
+    {
+      "method": "GET",
+      "path": "/servers",
+      "template": "/servers",
+      "args": [],
+      "kind": "collection",
+      "accessor": "servers",
+      "model": "Server",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/servers/object",
+      "template": "/servers/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "servers",
+      "model": "Server",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "DELETE",
+      "path": "/servers/object",
+      "template": "/servers/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "servers",
+      "model": "Server",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "POST",
+      "path": "/servers",
+      "template": "/servers",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "servers",
+      "model": "Server",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "POST",
+      "path": "/servers/object/actions/connect",
+      "template": "/servers/{id}/actions/connect",
+      "args": [],
+      "kind": "task",
+      "accessor": "servers",
+      "model": "Server",
+      "target": "model",
+      "call": "connect"
+    },
+    {
+      "method": "POST",
+      "path": "/servers/object/actions/disconnect",
+      "template": "/servers/{id}/actions/disconnect",
+      "args": [],
+      "kind": "task",
+      "accessor": "servers",
+      "model": "Server",
+      "target": "model",
+      "call": "disconnect"
+    },
+    {
+      "method": "GET",
+      "path": "/servers/object/tasks",
+      "template": "/servers/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "servers",
+      "model": "Server",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/sms",
+      "template": "/sms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "sms",
+      "model": "StorageManager",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/sms/object",
+      "template": "/sms/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "sms",
+      "model": "StorageManager",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/srs",
+      "template": "/srs",
+      "args": [],
+      "kind": "collection",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/object",
+      "template": "/srs/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "POST",
+      "path": "/srs",
+      "template": "/srs",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/object/alarms",
+      "template": "/srs/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/object/vdis",
+      "template": "/srs/{id}/vdis",
+      "args": [],
+      "kind": "upload-created",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "importVdi"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/object/messages",
+      "template": "/srs/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/srs/object/tasks",
+      "template": "/srs/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/srs/object/tags/tag",
+      "template": "/srs/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/srs/object/tags/tag",
+      "template": "/srs/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/object/actions/reclaim_space",
+      "template": "/srs/{id}/actions/reclaim_space",
+      "args": [],
+      "kind": "task",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "reclaimSpace"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/object/actions/scan",
+      "template": "/srs/{id}/actions/scan",
+      "args": [],
+      "kind": "task",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "scan"
+    },
+    {
+      "method": "POST",
+      "path": "/srs/object/actions/forget",
+      "template": "/srs/{id}/actions/forget",
+      "args": [],
+      "kind": "task",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "forget"
+    },
+    {
+      "method": "DELETE",
+      "path": "/srs/object",
+      "template": "/srs/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "srs",
+      "model": "StorageRepository",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/tasks",
+      "template": "/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "tasks",
+      "model": "Task",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/tasks/object",
+      "template": "/tasks/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "tasks",
+      "model": "Task",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "DELETE",
+      "path": "/tasks",
+      "template": "/tasks",
+      "args": [],
+      "kind": "empty",
+      "accessor": "tasks",
+      "model": "Task",
+      "target": "resource",
+      "call": "purge"
+    },
+    {
+      "method": "DELETE",
+      "path": "/tasks/object",
+      "template": "/tasks/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "tasks",
+      "model": "Task",
+      "target": "model",
+      "call": "forget"
+    },
+    {
+      "method": "POST",
+      "path": "/tasks/object/actions/abort",
+      "template": "/tasks/{id}/actions/abort",
+      "args": [],
+      "kind": "task",
+      "accessor": "tasks",
+      "model": "Task",
+      "target": "model",
+      "call": "abort"
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "template": "/users",
+      "args": [],
+      "kind": "collection",
+      "accessor": "users",
+      "model": "User",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/users/object",
+      "template": "/users/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "users",
+      "model": "User",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/object",
+      "template": "/users/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "users",
+      "model": "User",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "template": "/users",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "users",
+      "model": "User",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/object",
+      "template": "/users/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "users",
+      "model": "User",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/users/object/groups",
+      "template": "/users/{id}/groups",
+      "args": [],
+      "kind": "collection",
+      "accessor": "users",
+      "model": "User",
+      "target": "model",
+      "call": "groups"
+    },
+    {
+      "method": "GET",
+      "path": "/users/object/authentication_tokens",
+      "template": "/users/{id}/authentication_tokens",
+      "args": [],
+      "kind": "json",
+      "accessor": "users",
+      "model": "User",
+      "target": "model",
+      "call": "authenticationTokens"
+    },
+    {
+      "method": "GET",
+      "path": "/users/object/tasks",
+      "template": "/users/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "users",
+      "model": "User",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/users/object/authentication_tokens",
+      "template": "/users/{id}/authentication_tokens",
+      "args": [],
+      "kind": "json",
+      "accessor": "users",
+      "model": "User",
+      "target": "model",
+      "call": "createAuthenticationToken"
+    },
+    {
+      "method": "GET",
+      "path": "/users/object/acl-privileges",
+      "template": "/users/{id}/acl-privileges",
+      "args": [],
+      "kind": "collection",
+      "accessor": "users",
+      "model": "User",
+      "target": "model",
+      "call": "privileges"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds",
+      "template": "/vbds",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/object",
+      "template": "/vbds/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "POST",
+      "path": "/vbds",
+      "template": "/vbds",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vbds/object",
+      "template": "/vbds/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/object/alarms",
+      "template": "/vbds/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/object/messages",
+      "template": "/vbds/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vbds/object/tasks",
+      "template": "/vbds/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/vbds/object/actions/connect",
+      "template": "/vbds/{id}/actions/connect",
+      "args": [],
+      "kind": "task",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "model",
+      "call": "connect"
+    },
+    {
+      "method": "POST",
+      "path": "/vbds/object/actions/disconnect",
+      "template": "/vbds/{id}/actions/disconnect",
+      "args": [],
+      "kind": "task",
+      "accessor": "vbds",
+      "model": "VirtualBlockDevice",
+      "target": "model",
+      "call": "disconnect"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots",
+      "template": "/vdi-snapshots",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/object.vhd",
+      "template": "/vdi-snapshots/{id}.{format}",
+      "args": [
+        "vhd"
+      ],
+      "kind": "binary",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "model",
+      "call": "export"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/object",
+      "template": "/vdi-snapshots/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/object/alarms",
+      "template": "/vdi-snapshots/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdi-snapshots/object",
+      "template": "/vdi-snapshots/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/object/messages",
+      "template": "/vdi-snapshots/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vdi-snapshots/object/tasks",
+      "template": "/vdi-snapshots/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/vdi-snapshots/object/tags/tag",
+      "template": "/vdi-snapshots/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdi-snapshots/object/tags/tag",
+      "template": "/vdi-snapshots/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vdiSnapshots",
+      "model": "VirtualDiskSnapshot",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis",
+      "template": "/vdis",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/object.vhd",
+      "template": "/vdis/{id}.{format}",
+      "args": [
+        "vhd"
+      ],
+      "kind": "binary",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "export"
+    },
+    {
+      "method": "PUT",
+      "path": "/vdis/object.vhd",
+      "template": "/vdis/{id}.{format}",
+      "args": [
+        "vhd"
+      ],
+      "kind": "upload",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "importContent"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/object",
+      "template": "/vdis/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "PATCH",
+      "path": "/vdis/object",
+      "template": "/vdis/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/object/alarms",
+      "template": "/vdis/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "POST",
+      "path": "/vdis",
+      "template": "/vdis",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdis/object",
+      "template": "/vdis/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/object/messages",
+      "template": "/vdis/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vdis/object/tasks",
+      "template": "/vdis/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/vdis/object/actions/migrate",
+      "template": "/vdis/{id}/actions/migrate",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "migrate"
+    },
+    {
+      "method": "PUT",
+      "path": "/vdis/object/tags/tag",
+      "template": "/vdis/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vdis/object/tags/tag",
+      "template": "/vdis/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vdis",
+      "model": "VirtualDisk",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs",
+      "template": "/vifs",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/object",
+      "template": "/vifs/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "PATCH",
+      "path": "/vifs/object",
+      "template": "/vifs/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/object/alarms",
+      "template": "/vifs/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/object/messages",
+      "template": "/vifs/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vifs/object/tasks",
+      "template": "/vifs/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/vifs",
+      "template": "/vifs",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "created",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "resource",
+      "call": "create"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vifs/object",
+      "template": "/vifs/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "POST",
+      "path": "/vifs/object/actions/connect",
+      "template": "/vifs/{id}/actions/connect",
+      "args": [],
+      "kind": "task",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "model",
+      "call": "connect"
+    },
+    {
+      "method": "POST",
+      "path": "/vifs/object/actions/disconnect",
+      "template": "/vifs/{id}/actions/disconnect",
+      "args": [],
+      "kind": "task",
+      "accessor": "vifs",
+      "model": "VirtualInterface",
+      "target": "model",
+      "call": "disconnect"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers",
+      "template": "/vm-controllers",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/object",
+      "template": "/vm-controllers/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/object/alarms",
+      "template": "/vm-controllers/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/object/vdis",
+      "template": "/vm-controllers/{id}/vdis",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "model",
+      "call": "disks"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/object/messages",
+      "template": "/vm-controllers/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-controllers/object/tasks",
+      "template": "/vm-controllers/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/vm-controllers/object/tags/tag",
+      "template": "/vm-controllers/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-controllers/object/tags/tag",
+      "template": "/vm-controllers/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vmControllers",
+      "model": "VirtualMachineController",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots",
+      "template": "/vm-snapshots",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/object.xva",
+      "template": "/vm-snapshots/{id}.{format}",
+      "args": [
+        "xva"
+      ],
+      "kind": "binary",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "export"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/object",
+      "template": "/vm-snapshots/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-snapshots/object",
+      "template": "/vm-snapshots/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/object/alarms",
+      "template": "/vm-snapshots/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/object/vdis",
+      "template": "/vm-snapshots/{id}/vdis",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "disks"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/object/messages",
+      "template": "/vm-snapshots/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-snapshots/object/tasks",
+      "template": "/vm-snapshots/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/vm-snapshots/object/tags/tag",
+      "template": "/vm-snapshots/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-snapshots/object/tags/tag",
+      "template": "/vm-snapshots/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vmSnapshots",
+      "model": "VirtualMachineSnapshot",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates",
+      "template": "/vm-templates",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/object.xva",
+      "template": "/vm-templates/{id}.{format}",
+      "args": [
+        "xva"
+      ],
+      "kind": "binary",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "export"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/object",
+      "template": "/vm-templates/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-templates/object",
+      "template": "/vm-templates/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/object/alarms",
+      "template": "/vm-templates/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/object/vdis",
+      "template": "/vm-templates/{id}/vdis",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "disks"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/object/messages",
+      "template": "/vm-templates/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vm-templates/object/tasks",
+      "template": "/vm-templates/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/vm-templates/object/tags/tag",
+      "template": "/vm-templates/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vm-templates/object/tags/tag",
+      "template": "/vm-templates/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vmTemplates",
+      "model": "VirtualMachineTemplate",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/vms",
+      "template": "/vms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "resource",
+      "call": "get"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object.xva",
+      "template": "/vms/{id}.{format}",
+      "args": [
+        "xva"
+      ],
+      "kind": "binary",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "export"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object",
+      "template": "/vms/{id}",
+      "args": [
+        "object"
+      ],
+      "kind": "object",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "resource",
+      "call": "find"
+    },
+    {
+      "method": "PATCH",
+      "path": "/vms/object",
+      "template": "/vms/{id}",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "empty",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "update"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vms/object",
+      "template": "/vms/{id}",
+      "args": [],
+      "kind": "empty",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "delete"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object/stats",
+      "template": "/vms/{id}/stats",
+      "args": [],
+      "kind": "json",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "stats"
+    },
+    {
+      "method": "PUT",
+      "path": "/vms/object/stats/data_source/cpu0",
+      "template": "/vms/{id}/stats/data_source/{data_source}",
+      "args": [
+        "cpu0"
+      ],
+      "kind": "empty",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "enableDataSource"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vms/object/stats/data_source/cpu0",
+      "template": "/vms/{id}/stats/data_source/{data_source}",
+      "args": [
+        "cpu0"
+      ],
+      "kind": "empty",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "disableDataSource"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/start",
+      "template": "/vms/{id}/actions/start",
+      "args": [],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "start"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/clean_shutdown",
+      "template": "/vms/{id}/actions/clean_shutdown",
+      "args": [],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "shutdown"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/clean_reboot",
+      "template": "/vms/{id}/actions/clean_reboot",
+      "args": [],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "reboot"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/hard_shutdown",
+      "template": "/vms/{id}/actions/hard_shutdown",
+      "args": {
+        "force": true
+      },
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "shutdown"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/hard_reboot",
+      "template": "/vms/{id}/actions/hard_reboot",
+      "args": {
+        "force": true
+      },
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "reboot"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/pause",
+      "template": "/vms/{id}/actions/pause",
+      "args": [],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "pause"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/suspend",
+      "template": "/vms/{id}/actions/suspend",
+      "args": [],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "suspend"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/resume",
+      "template": "/vms/{id}/actions/resume",
+      "args": [],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "resume"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/unpause",
+      "template": "/vms/{id}/actions/unpause",
+      "args": [],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "unpause"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/revert_snapshot",
+      "template": "/vms/{id}/actions/revert_snapshot",
+      "args": [
+        "snapshot-id"
+      ],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "revertSnapshot"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/snapshot",
+      "template": "/vms/{id}/actions/snapshot",
+      "args": [
+        "snapshot-label"
+      ],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "snapshot"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/clone",
+      "template": "/vms/{id}/actions/clone",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "cloneVm"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object/alarms",
+      "template": "/vms/{id}/alarms",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "alarms"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object/vdis",
+      "template": "/vms/{id}/vdis",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "disks"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object/backup-jobs",
+      "template": "/vms/{id}/backup-jobs",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "backupJobs"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object/messages",
+      "template": "/vms/{id}/messages",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "messages"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object/tasks",
+      "template": "/vms/{id}/tasks",
+      "args": [],
+      "kind": "collection",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "tasks"
+    },
+    {
+      "method": "PUT",
+      "path": "/vms/object/tags/tag",
+      "template": "/vms/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "addTag"
+    },
+    {
+      "method": "DELETE",
+      "path": "/vms/object/tags/tag",
+      "template": "/vms/{id}/tags/{tag}",
+      "args": [
+        "tag"
+      ],
+      "kind": "empty",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "removeTag"
+    },
+    {
+      "method": "GET",
+      "path": "/vms/object/dashboard",
+      "template": "/vms/{id}/dashboard",
+      "args": [],
+      "kind": "json",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/vms/object/actions/migrate",
+      "template": "/vms/{id}/actions/migrate",
+      "args": [
+        {
+          "name": "example"
+        }
+      ],
+      "kind": "task",
+      "accessor": "vms",
+      "model": "VirtualMachine",
+      "target": "model",
+      "call": "migrate"
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard",
+      "template": "/dashboard",
+      "args": [],
+      "kind": "json",
+      "target": "client",
+      "call": "dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/ping",
+      "template": "/ping",
+      "args": [],
+      "kind": "json",
+      "target": "client",
+      "call": "ping"
+    },
+    {
+      "method": "GET",
+      "path": "/gui-routes",
+      "template": "/gui-routes",
+      "args": [],
+      "kind": "json",
+      "target": "client",
+      "call": "guiRoutes"
+    }
+  ],
+  "deprecated": [
+    "GET /backup/jobs/vm",
+    "GET /backup/jobs/{id}",
+    "GET /backup/jobs/vm/{id}",
+    "GET /backup/jobs/metadata",
+    "GET /backup/jobs/metadata/{id}",
+    "GET /backup/jobs/mirror",
+    "GET /backup/jobs/mirror/{id}",
+    "GET /backup/logs",
+    "GET /backup/logs/{id}",
+    "GET /restore/logs",
+    "GET /restore/logs/{id}",
+    "POST /users/authentication_tokens"
+  ]
+}

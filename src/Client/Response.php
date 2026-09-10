@@ -52,6 +52,44 @@ final readonly class Response
         return (string) $stream;
     }
 
+    /** Save the remaining body without buffering it. Existing files are never overwritten. */
+    public function saveTo(string $path): int
+    {
+        $destination = @fopen($path, 'xb');
+        if ($destination === false) {
+            throw new \RuntimeException('Cannot create download file: '.$path);
+        }
+
+        $bytes = 0;
+        $source = $this->psr->getBody();
+        try {
+            while (! $source->eof()) {
+                $chunk = $source->read(65536);
+                if ($chunk === '' && ! $source->eof()) {
+                    throw new \RuntimeException('Download stream stopped before EOF.');
+                }
+                while ($chunk !== '') {
+                    $written = fwrite($destination, $chunk);
+                    if ($written === false || $written === 0) {
+                        throw new \RuntimeException('Failed to write download file: '.$path);
+                    }
+                    $bytes += $written;
+                    $chunk = substr($chunk, $written);
+                }
+            }
+        } catch (\Throwable $e) {
+            fclose($destination);
+            $source->close();
+            @unlink($path);
+            throw $e;
+        }
+
+        fclose($destination);
+        $source->close();
+
+        return $bytes;
+    }
+
     /**
      * Decoded JSON body, or null for empty bodies (204 No Content, and some XO
      * action endpoints that answer with nothing at all).

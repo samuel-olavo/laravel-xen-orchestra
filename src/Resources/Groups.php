@@ -18,4 +18,10 @@ class Groups extends Resource
     {
         return Group::class;
     }
+
+    /** Returns the created object as a partial model, without an implicit GET. */
+    public function create(array $attributes): Group
+    {
+        return new Group((array) $this->client->post($this->endpoint(), $attributes), $this->client);
+    }
 }
