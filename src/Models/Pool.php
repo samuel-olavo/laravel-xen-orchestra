@@ -60,15 +60,15 @@ class Pool extends Model
      * `POST /pools/<id>/actions/rolling_update` — update hosts one at a time,
      * migrating VMs around them. Long-running; expect to wait minutes.
      */
-    public function rollingUpdate(bool $sync = false): Task
+    public function rollingUpdate(bool $sync = false, ?bool $shutdownPinnedVms = null): Task
     {
-        return $this->action('rolling_update', sync: $sync);
+        return $this->action('rolling_update', $shutdownPinnedVms === null ? [] : compact('shutdownPinnedVms'), $sync);
     }
 
     /** `POST /pools/<id>/actions/rolling_reboot` */
-    public function rollingReboot(bool $sync = false): Task
+    public function rollingReboot(bool $sync = false, ?bool $shutdownPinnedVms = null): Task
     {
-        return $this->action('rolling_reboot', sync: $sync);
+        return $this->action('rolling_reboot', $shutdownPinnedVms === null ? [] : compact('shutdownPinnedVms'), $sync);
     }
 
     /**
@@ -88,16 +88,8 @@ class Pool extends Model
      * between versions, so a hardcoded whitelist here would break instances it
      * was never tested against.
      *
-     * Known traps, current as of rest-api 0.21.x:
-     *
-     *  - `template` (a template UUID) and `name_label` are the practical
-     *    minimum.
-     *  - `memory`, `name_description` and `auto_poweron` are **rejected** on
-     *    creation with "excess property and therefore is not allowed", even
-     *    though they appear on VMs returned by GET. Set them afterwards.
-     *  - Property naming is not consistent between GET responses and this
-     *    payload (snake_case vs camelCase). Do not assume a field you read back
-     *    can be written with the same name.
+     * REST API 0.37 accepts high_availability for the HA restart priority.
+     * Creation and update payloads use different property names.
      *
      * The authoritative field list for *your* version is the create_vm entry in
      * your appliance's own OpenAPI document, at /rest/v0/docs/swagger.json.
@@ -115,6 +107,21 @@ class Pool extends Model
         return $this->action('create_network', $attributes, $sync);
     }
 
+    public function createBondedNetwork(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('create_bonded_network', $attributes, $sync);
+    }
+
+    public function createInternalNetwork(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('create_internal_network', $attributes, $sync);
+    }
+
+    public function managementReconfigure(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('management_reconfigure', $attributes, $sync);
+    }
+
     protected function action(string $action, array $body = [], bool $sync = false): Task
     {
         $payload = $this->client->post(
@@ -123,6 +130,6 @@ class Pool extends Model
             $sync ? ['sync' => true] : [],
         );
 
-        return Task::fromActionResponse($payload, $this->client);
+        return Task::fromActionResponse($payload, $this->client, $sync);
     }
 }

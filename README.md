@@ -48,7 +48,7 @@ $vms = Xo::vms()->fields(['name_label', 'power_state'])->limit(100)->get();
 
 Laravel 11 is not supported: its security support ended on 12 March 2026, and Composer refuses to resolve `illuminate/*` 11.x against the advisory database.
 
-Built and tested against `@xen-orchestra/rest-api` **0.21.1**. The API is still versioned `/v0` and its authors reserve the right to change it, so pin a version you have tested.
+Updated against `@xen-orchestra/rest-api` **0.37.0**, shipped with XO **6.7.0** ([reference commit](https://github.com/vatesfr/xen-orchestra/commit/1a795970f9c60396967d9510e3d2a29b56f2da1d)). Request contracts are covered by local tests with a fake transport; live-appliance integration has not been verified. The API is still versioned `/v0` and its authors reserve the right to change it, so pin a version you have tested.
 
 ## Installation
 
@@ -225,6 +225,58 @@ $pool->createVm([...]);
 $pool->createNetwork([...]);
 ```
 
+### XO 6.7 / REST API 0.37 additions
+
+```php
+// Update fields using the API's spelling (VM updates use camelCase).
+$vm->update(['nameLabel' => 'web-02', 'nameDescription' => 'Production']);
+$vm->fetch(); // Explicit refresh; update() does not change cached attributes.
+
+$vm->cloneVm(['name_label' => 'web-copy', 'fast' => true])->wait();
+$vm->migrate(['hostId' => $destinationHost])->wait();
+$vm->revertSnapshot($snapshotId, snapshotBefore: true)->wait();
+
+// VDI updates use snake_case; size is in bytes and cannot shrink a disk.
+Xo::vdis()->find($diskId)->update(['name_label' => 'data', 'size' => 10737418240]);
+
+$sr = Xo::srs()->create([
+    'hostId' => $hostId,
+    'SR_type' => 'nfs',
+    'name_label' => 'shared-data',
+    'device_config' => ['server' => '10.0.0.2', 'serverpath' => '/data'],
+]); // Partial StorageRepository, not a Task; use $sr->fetch() for full data.
+
+$host->disable(['evacuate' => true, 'autoEnable' => true])->wait();
+$host->enable()->wait();
+$pool->rollingUpdate(shutdownPinnedVms: true)->wait();
+$pool->rollingReboot(shutdownPinnedVms: true)->wait();
+$pool->createVm([
+    'template' => $templateId,
+    'name_label' => 'web-03',
+    'high_availability' => 'restart',
+])->wait();
+
+$pool->createInternalNetwork(['name' => 'private'])->wait();
+$pool->createBondedNetwork([
+    'name' => 'bond', 'pifIds' => [$pif1, $pif2], 'bondMode' => 'active-backup',
+])->wait();
+$pool->managementReconfigure(['network' => $networkId])->wait();
+
+$role = Xo::aclRoles()->find($roleId);
+$role->users(['id', 'email']);
+$role->groups(['id', 'name'], ['limit' => 10]);
+Xo::groups()->find($groupId)->aclRoles(['id', 'name']);
+Xo::users()->fields(['id', 'email'])->get();
+```
+
+`shutdownPinnedVms` allows XO to stop VMs tied to host devices and restart them after maintenance. Omit it to keep the existing behavior. The original positional `sync` argument remains unchanged.
+
+VM/VDI updates return the same model without an implicit GET. XO applies fields sequentially, so an error may occur after earlier fields were applied; use `fetch()` to read the actual state. Payload validation and RBAC enforcement remain on XO.
+
+Synchronous actions return a completed `Task`, with the operation's entire response in `result()` (including created object IDs). Calling `wait()` on it makes no additional request.
+
+See [the release coverage notes](docs/rest-api-0.37.md) for the mapped endpoints and scope.
+
 ### Sub-resources
 
 `alarms`, `messages`, `tasks` and `tags` are available on every object that supports them:
@@ -318,9 +370,12 @@ The REST API is read-heavy, and this package does not pretend otherwise. Being e
 
 **Supported**
 
-- Reads across VMs, hosts, pools, SRs, networks, tasks, snapshots, templates
+- Reads across VMs, hosts, pools, SRs, networks, tasks, snapshots, templates, VDIs, users, groups and ACL roles
 - `fields`, `filter`, `limit`, `ndjson`
-- The full VM power lifecycle, plus snapshots
+- The full VM power lifecycle, snapshots, snapshot restoration, cloning, migration and partial updates
+- VDI partial updates and storage repository creation
+- Host enable/disable with evacuation and auto-enable options
+- ACL role users/groups and group ACL roles
 - Pool-level actions: rolling update, rolling reboot, emergency shutdown, VM and network creation
 - Tags, alarms, messages, per-object tasks
 - Stats and dashboard endpoints
@@ -329,7 +384,6 @@ The REST API is read-heavy, and this package does not pretend otherwise. Being e
 
 **Not supported, because the REST API does not offer it**
 
-- **Editing a VM.** There is no `PATCH /vms/<id>`. Renaming a VM or changing its CPU/RAM still requires the older JSON-RPC API.
 - **Creating or editing backup jobs.** `/backup-jobs` and `/schedules` are read-only; schedules can only be triggered.
 - **Xen Orchestra's Self Service feature.** Resource sets — the quota sandboxes that back XO's own self-service portal — have no REST collection. They are managed through the XO web UI and the JSON-RPC API (`resourceSet.*`). Users and groups *are* exposed, so the identity half can be automated; the quota half cannot.
 
@@ -344,17 +398,13 @@ $task = Xo::pools()->find($poolId)->createVm([
 ])->wait();
 ```
 
-Traps worth knowing before you spend an afternoon on them:
-
-- `memory`, `name_description` and `auto_poweron` are **rejected** on creation — "excess property and therefore is not allowed" — even though they appear on VMs you read back. Set them afterwards.
-- Property naming differs between GET responses and this payload (snake_case vs camelCase). A field you can read is not necessarily a field you can write under the same name.
-- The authoritative field list for your version is the `create_vm` entry in your own appliance's `/rest/v0/docs/swagger.json`, not the GET response shape.
+Creation payloads are passed unchanged to XO. In 0.37.0, `high_availability` sets the HA restart priority. Field names differ between creation, updates and GET responses; consult the `create_vm` entry in your appliance's `/rest/v0/docs/swagger.json` for the complete contract.
 
 **Not supported yet, planned**
 
 - Binary import/export of VMs and VDIs (XVA/VHD streaming)
 - The `/events` SSE stream and its subscriptions
-- Users, groups and server administration endpoints
+- User/group administration (listing and permission relations are supported); server administration endpoints
 
 ## Architecture
 

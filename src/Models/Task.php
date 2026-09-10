@@ -175,7 +175,12 @@ class Task extends Model
     public static function fromActionResponse(
         mixed $payload,
         \SamuelOlavo\XenOrchestra\Client\XenOrchestraClient $client,
+        bool $sync = false,
     ): self {
+        if ($sync) {
+            return new self(['status' => 'success', 'result' => $payload], $client);
+        }
+
         if (is_string($payload) && $payload !== '') {
             return new self(
                 str_contains($payload, '/')

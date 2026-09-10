@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Client;
 
+use SamuelOlavo\XenOrchestra\Resources\AclRoles;
+use SamuelOlavo\XenOrchestra\Resources\Groups;
+use SamuelOlavo\XenOrchestra\Resources\Users;
+use SamuelOlavo\XenOrchestra\Resources\VirtualDisks;
+
 use GuzzleHttp\Psr7\HttpFactory;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
@@ -96,6 +101,26 @@ class XenOrchestraClient
     // ---------------------------------------------------------------------
     // Resources
     // ---------------------------------------------------------------------
+
+    public function vdis(): VirtualDisks
+    {
+        return new VirtualDisks($this);
+    }
+
+    public function aclRoles(): AclRoles
+    {
+        return new AclRoles($this);
+    }
+
+    public function groups(): Groups
+    {
+        return new Groups($this);
+    }
+
+    public function users(): Users
+    {
+        return new Users($this);
+    }
 
     public function vms(): VirtualMachines
     {

@@ -24,6 +24,11 @@ final class ModelResolver
         'srs' => StorageRepository::class,
         'networks' => Network::class,
         'tasks' => Task::class,
+        'vdis' => VirtualDisk::class,
+        'acl-roles' => AclRole::class,
+        'groups' => Group::class,
+        'users' => User::class,
+
     ];
 
     /** @return class-string<Model> */

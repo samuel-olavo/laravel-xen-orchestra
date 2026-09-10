@@ -9,14 +9,16 @@ use SamuelOlavo\XenOrchestra\Models\StorageRepository;
 /**
  * `/srs`
  *
- * XO also exposes `/sms`, whose operations are literally named GetSrs/GetSr —
- * an alias of this collection. It is deliberately not mirrored here: one way to
- * reach storage repositories is enough.
- *
  * @method StorageRepository find(string $id, array $fields = [])
  */
 class StorageRepositories extends Resource
 {
+    /** Returns a partial SR; call fetch() when the full object is needed. */
+    public function create(array $attributes): StorageRepository
+    {
+        return new StorageRepository((array) $this->client->post($this->endpoint(), $attributes), $this->client);
+    }
+
     public function endpoint(): string
     {
         return 'srs';

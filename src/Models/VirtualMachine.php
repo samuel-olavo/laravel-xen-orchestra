@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Models;
 
+use SamuelOlavo\XenOrchestra\Concerns\UpdatesObject;
+
 use SamuelOlavo\XenOrchestra\Client\Collection;
 use SamuelOlavo\XenOrchestra\Concerns\HasAlarms;
 use SamuelOlavo\XenOrchestra\Concerns\HasMessages;
@@ -14,10 +16,7 @@ use SamuelOlavo\XenOrchestra\Concerns\HydratesModels;
 /**
  * A virtual machine.
  *
- * Worth knowing up front: the REST API has **no** `PATCH /vms/<id>`. You cannot
- * rename a VM or change its CPU/RAM through it — that still requires the older
- * JSON-RPC API. This class exposes what the REST API actually offers: reads,
- * power lifecycle, snapshots and tags.
+ * REST API 0.37 supports partial updates, cloning and migration.
  */
 class VirtualMachine extends Model
 {
@@ -26,6 +25,22 @@ class VirtualMachine extends Model
     use HasTags;
     use HasTasks;
     use HydratesModels;
+    use UpdatesObject;
+
+    public function cloneVm(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('clone', $attributes, $sync);
+    }
+
+    public function migrate(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('migrate', $attributes, $sync);
+    }
+
+    public function revertSnapshot(string $snapshotId, bool $snapshotBefore = false, bool $sync = false): Task
+    {
+        return $this->action('revert_snapshot', compact('snapshotId', 'snapshotBefore'), $sync);
+    }
 
     public static function endpoint(): string
     {
@@ -165,7 +180,7 @@ class VirtualMachine extends Model
             $fields === [] ? [] : ['fields' => $fields],
         );
 
-        return $this->hydrateMany($payload, GenericObject::class, $this->client);
+        return $this->hydrateMany($payload, VirtualDisk::class, $this->client);
     }
 
     /** `GET /vms/<id>/stats` — RRD performance data. */
@@ -212,6 +227,6 @@ class VirtualMachine extends Model
             $sync ? ['sync' => true] : [],
         );
 
-        return Task::fromActionResponse($payload, $this->client);
+        return Task::fromActionResponse($payload, $this->client, $sync);
     }
 }

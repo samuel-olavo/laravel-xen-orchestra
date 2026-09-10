@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SamuelOlavo\XenOrchestra\Models;
 
+use SamuelOlavo\XenOrchestra\Concerns\RunsActions;
+
 use SamuelOlavo\XenOrchestra\Client\Collection;
 use SamuelOlavo\XenOrchestra\Concerns\HasAlarms;
 use SamuelOlavo\XenOrchestra\Concerns\HasMessages;
@@ -19,6 +21,18 @@ class Host extends Model
     use HasTags;
     use HasTasks;
     use HydratesModels;
+    use RunsActions;
+
+    /** Options include evacuate, autoEnable, force and vmIdsToForceMigrate. */
+    public function disable(array $options = [], bool $sync = false): Task
+    {
+        return $this->action('disable', $options, $sync);
+    }
+
+    public function enable(bool $sync = false): Task
+    {
+        return $this->action('enable', sync: $sync);
+    }
 
     public static function endpoint(): string
     {
