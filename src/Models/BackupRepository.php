@@ -30,4 +30,10 @@ class BackupRepository extends Model
     {
         return (array) $this->client->get($this->path('health'));
     }
+
+    /** Options: vmUuid, merge and remove. Omitted options use server defaults. */
+    public function reclaimSpace(array $attributes = [], bool $sync = false): Task
+    {
+        return $this->action('reclaim-space', $attributes, $sync);
+    }
 }

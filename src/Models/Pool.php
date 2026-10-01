@@ -61,15 +61,33 @@ class Pool extends Model
      * `POST /pools/<id>/actions/rolling_update` — update hosts one at a time,
      * migrating VMs around them. Long-running; expect to wait minutes.
      */
-    public function rollingUpdate(bool $sync = false, ?bool $shutdownPinnedVms = null): Task
+    public function rollingUpdate(bool $sync = false, ?bool $shutdownPinnedVms = null, ?bool $bypassBackupCheck = null, ?bool $acceptCurrentStateAsBaseline = null): Task
     {
-        return $this->action('rolling_update', $shutdownPinnedVms === null ? [] : compact('shutdownPinnedVms'), $sync);
+        return $this->action('rolling_update', array_filter(
+            compact('shutdownPinnedVms', 'bypassBackupCheck', 'acceptCurrentStateAsBaseline'),
+            static fn ($value) => $value !== null,
+        ), $sync);
     }
 
     /** `POST /pools/<id>/actions/rolling_reboot` */
-    public function rollingReboot(bool $sync = false, ?bool $shutdownPinnedVms = null): Task
+    public function rollingReboot(bool $sync = false, ?bool $shutdownPinnedVms = null, ?bool $bypassBackupCheck = null): Task
     {
-        return $this->action('rolling_reboot', $shutdownPinnedVms === null ? [] : compact('shutdownPinnedVms'), $sync);
+        return $this->action('rolling_reboot', array_filter(
+            compact('shutdownPinnedVms', 'bypassBackupCheck'),
+            static fn ($value) => $value !== null,
+        ), $sync);
+    }
+
+    /** The server returns 404 when no recovery record exists. */
+    public function rollingUpdateRecovery(): array
+    {
+        return (array) $this->client->get($this->path('rolling_update_recovery'));
+    }
+
+    /** Force abandons unrestored items; it does not repair the pool. */
+    public function finalizeRollingUpdate(bool $sync = false, ?bool $force = null): Task
+    {
+        return $this->action('finalize_rolling_update', $force === null ? [] : compact('force'), $sync);
     }
 
     /**

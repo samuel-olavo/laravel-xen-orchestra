@@ -1,10 +1,10 @@
-# REST API 0.39.0 coverage
+# REST API 0.40.2 coverage
 
-Reference: [XO commit faf6745471d7b2a00d774d98428873455e9539dc](https://github.com/vatesfr/xen-orchestra/tree/faf6745471d7b2a00d774d98428873455e9539dc/%40xen-orchestra/rest-api/src).
+Reference: [XO commit a2bd181d3528a61a45bbd4fe99686875fe8eebf8](https://github.com/vatesfr/xen-orchestra/tree/a2bd181d3528a61a45bbd4fe99686875fe8eebf8/%40xen-orchestra/rest-api/src).
 
-Version 1.0.0 maps all 259 non-deprecated controller routes: 256 exercised by the route test matrix and three event routes covered by SSE tests. Seven IPMI/SDN plugin routes and the OpenAPI document have additional helpers. Twelve deprecated aliases use their current replacements. This counts routes, not independently validated payload schemas or live integration tests.
+Version 1.1.0 maps all 264 non-deprecated controller routes: 261 exercised by the route test matrix and three event routes covered by SSE tests. Seven IPMI/SDN plugin routes and the OpenAPI document have additional helpers. Twelve deprecated aliases use their current replacements. This counts routes, not independently validated payload schemas or live integration tests.
 
-Core route facts are pinned in `tests/Fixtures/rest-api-0.39-routes.json`; the calls fixture is the reviewed PHP mapping. Tests check request paths, verbs, return categories and synchronous action completion. The server validates payload fields.
+Core route facts are pinned in `tests/Fixtures/rest-api-0.40-routes.json`; the calls fixture is the reviewed PHP mapping. Tests check request paths, verbs, return categories and synchronous action completion. The server validates payload fields.
 
 Local validation: PHP 8.4 / Laravel 13. PHP 8.2 was not run locally. The CI matrix is configured for PHP 8.2-8.4 and Laravel 12/13. No live-appliance integration test was performed.
 
@@ -12,6 +12,11 @@ Local validation: PHP 8.4 / Laravel 13. PHP 8.2 was not run locally. The CI matr
 
 | Method | Path | PHP helper |
 | --- | --- | --- |
+| POST | `/backup-archives/{id}/actions/mount_live_disk` | `BackupArchive->mountLiveDisk()` |
+| POST | `/backup-archives/{id}/live_disks/{liveDiskId}/actions/unmount` | `BackupArchive->unmountLiveDisk()` |
+| POST | `/backup-repositories/{id}/actions/reclaim-space` | `BackupRepository->reclaimSpace()` |
+| GET | `/pools/{id}/rolling_update_recovery` | `Pool->rollingUpdateRecovery()` |
+| POST | `/pools/{id}/actions/finalize_rolling_update` | `Pool->finalizeRollingUpdate()` |
 | GET | `/acl-privileges` | `Xo::aclPrivileges()->get()` |
 | POST | `/acl-privileges` | `Xo::aclPrivileges()->create()` |
 | GET | `/acl-privileges/{id}` | `Xo::aclPrivileges()->find()` |
