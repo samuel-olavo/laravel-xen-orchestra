@@ -16,6 +16,7 @@ final class ModelResolver
 {
     /** @var array<string, class-string<Model>> */
     private const MAP = [
+        'plugins' => Plugin::class,
         'vm-controllers' => VirtualMachineController::class,
         'vdi-snapshots' => VirtualDiskSnapshot::class,
         'vifs' => VirtualInterface::class,

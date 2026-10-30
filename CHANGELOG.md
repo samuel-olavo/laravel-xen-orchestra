@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0 — 2026-10-30
+
+Targets Xen Orchestra 6.10.0 / REST API 0.41.1, revision `b477167b41f2ac401e7d8c852c139566b9fe756e`.
+
+### Added
+
+- Plugin collection/model: list, inspect, update autoload, replace/clear configuration, load, unload and test.
+- Eight host storage probe helpers for NFS, ZFS, HBA and iSCSI, preserving synchronous results and asynchronous tasks.
+- Route inventory for all 280 non-deprecated controller routes.
+- Regression coverage and examples for VMDK exports, new SSE collections, migration CPU-check options, insecure NBD, role privileges and template disk removal.
+
+### Compatibility and validation
+
+Existing calls remain compatible. New capabilities require server support. Tests use PHP 8.4.26 and a fake HTTP transport; no live-appliance integration test was performed. See [usage](docs/usage-1.2.md), [coverage](docs/rest-api-0.41.md) and [release notes](docs/releases/v1.2.0.md).
+
+Upstream: [XO 6.10 announcement](https://xen-orchestra.com/blog/xen-orchestra-6-10/). Thank you to the Vates and Xen Orchestra team and the community for their continued work, recognition and feedback.
+
 ## 1.1.0 — 2026-10-01
 
 Targets Xen Orchestra 6.9.0 / REST API 0.40.2, revision `a2bd181d3528a61a45bbd4fe99686875fe8eebf8`.

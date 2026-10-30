@@ -1,4 +1,4 @@
-# Laravel Xen Orchestra 1.1.0
+# Laravel Xen Orchestra 1.2.0
 
 Laravel client for the Xen Orchestra REST API: infrastructure, backups, identity/RBAC administration, asynchronous tasks, binary transfers and events.
 
@@ -48,7 +48,7 @@ $vms = Xo::vms()->fields(['name_label', 'power_state'])->limit(100)->get();
 
 Laravel 11 is not supported: its security support ended on 12 March 2026, and Composer refuses to resolve `illuminate/*` 11.x against the advisory database.
 
-Version **1.1.0** targets `@xen-orchestra/rest-api` **0.40.2**, shipped with XO **6.9.0** ([reference commit](https://github.com/vatesfr/xen-orchestra/commit/a2bd181d3528a61a45bbd4fe99686875fe8eebf8)). See the [coverage table](docs/rest-api-0.40.md), [1.1 additions](docs/usage-1.1.md), [base usage guide](docs/usage-1.0.md) and [migration notes](CHANGELOG.md). Contracts are tested with a fake transport; live-appliance integration has not been verified.
+Version **1.2.0** targets `@xen-orchestra/rest-api` **0.41.1**, shipped with XO **6.10.0** ([reference commit](https://github.com/vatesfr/xen-orchestra/commit/b477167b41f2ac401e7d8c852c139566b9fe756e)). See the [coverage table](docs/rest-api-0.41.md), [1.2 additions](docs/usage-1.2.md), [1.1 additions](docs/usage-1.1.md), [base usage guide](docs/usage-1.0.md) and [migration notes](CHANGELOG.md). Contracts are tested with a fake transport; live-appliance integration has not been verified.
 
 
 ## Installation
@@ -277,6 +277,8 @@ VM/VDI updates return the same model without an implicit GET. XO applies fields 
 Synchronous actions return a completed `Task`, with the operation's entire response in `result()` (including created object IDs). Calling `wait()` on it makes no additional request.
 
 The [1.0 guide](docs/usage-1.0.md) covers transfers and subscriptions. The [1.1 guide](docs/usage-1.1.md) adds live backup disks, space reclamation, pool recovery, QCOW2 exports and additional SSE collections.
+
+The [1.2 guide](docs/usage-1.2.md) covers plugin management, host storage discovery and the XO 6.10 additions.
 
 ### Sub-resources
 

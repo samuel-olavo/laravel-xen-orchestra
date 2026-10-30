@@ -66,7 +66,12 @@ use SamuelOlavo\XenOrchestra\Resources\VirtualMachineTemplates;
  */
 class XenOrchestraClient
 {
-    public const VERSION = '1.1.0';
+    public const VERSION = '1.2.0';
+
+    public function plugins(): \SamuelOlavo\XenOrchestra\Resources\Plugins
+    {
+        return new \SamuelOlavo\XenOrchestra\Resources\Plugins($this);
+    }
 
     public const API_PREFIX = '/rest/v0';
 

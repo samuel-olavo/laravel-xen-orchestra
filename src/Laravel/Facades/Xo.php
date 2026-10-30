@@ -10,6 +10,7 @@ use SamuelOlavo\XenOrchestra\Client\XenOrchestraClient;
 use SamuelOlavo\XenOrchestra\Testing\FakeHttpClient;
 
 /**
+ * @method static \SamuelOlavo\XenOrchestra\Resources\Plugins plugins()
  * @method static \SamuelOlavo\XenOrchestra\Resources\VirtualMachines vms()
  * @method static \SamuelOlavo\XenOrchestra\Models\VirtualMachine vm(string $id, array $fields = [])
  * @method static \SamuelOlavo\XenOrchestra\Resources\Hosts hosts()

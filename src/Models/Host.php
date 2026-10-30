@@ -150,4 +150,44 @@ class Host extends Model
     {
         return $this->client->download($this->path('logs.tgz'));
     }
+
+    public function probeNfs(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('probe_nfs', $attributes, $sync);
+    }
+
+    public function probeZfs(bool $sync = false): Task
+    {
+        return $this->action('probe_zfs', [], $sync);
+    }
+
+    public function probeHba(bool $sync = false): Task
+    {
+        return $this->action('probe_hba', [], $sync);
+    }
+
+    public function probeIscsiIqns(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('probe_iscsi_iqns', $attributes, $sync);
+    }
+
+    public function probeIscsiLuns(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('probe_iscsi_luns', $attributes, $sync);
+    }
+
+    public function probeIscsiExists(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('probe_iscsi_exists', $attributes, $sync);
+    }
+
+    public function probeHbaExists(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('probe_hba_exists', $attributes, $sync);
+    }
+
+    public function probeNfsExists(array $attributes, bool $sync = false): Task
+    {
+        return $this->action('probe_nfs_exists', $attributes, $sync);
+    }
 }
